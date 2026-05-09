@@ -1,11 +1,27 @@
 package sistema;
 
+import cartoes.Cartao;
+import cartoes.CartaoComum;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Usuario {
     private String nomeUsuario;
     private  String cpf;
     private int idade;
     private Empresa empresaU;
     private Instituicao instituicao;
+    private List<Cartao> listaCartoes;
+
+    public Usuario (String nomeUsuario, String cpf, int idade) {
+        this.nomeUsuario = nomeUsuario;
+        this.cpf = cpf;
+        this.idade = idade;
+        this.listaCartoes = new ArrayList<>();
+
+    }
 
     public Instituicao
     getInstituicao() {
@@ -46,5 +62,24 @@ public class Usuario {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public List<Cartao> getListaCartoes() {
+        return listaCartoes;
+    }
+
+    public void setListaCartoes(List<Cartao> listaCartoes) {
+        this.listaCartoes = listaCartoes;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nomeUsuario='" + nomeUsuario + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", idade=" + idade +
+                ", empresaU=" + empresaU +
+                ", instituicao=" + instituicao +
+                '}';
     }
 }

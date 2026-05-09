@@ -30,4 +30,11 @@ public abstract class Cartao {
     }
     public abstract boolean validarSolicitacao(Usuario usuario);
 
+    @Override
+    public String toString() {
+        return "Cartao{" +
+                "numeroCartao='" + numeroCartao + '\'' +
+                ", tipoCartao='" + tipoCartao + '\'' +
+                '}';
+    }
 }
