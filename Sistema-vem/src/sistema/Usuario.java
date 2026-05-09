@@ -7,7 +7,8 @@ public class Usuario {
     private Empresa empresaU;
     private Instituicao instituicao;
 
-    public Instituicao getInstituicao() {
+    public Instituicao
+    getInstituicao() {
         return instituicao;
     }
 
