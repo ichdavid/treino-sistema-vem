@@ -28,6 +28,7 @@ public abstract class Cartao {
     public void setTipoCartao(String tipoCartao) {
         this.tipoCartao = tipoCartao;
     }
+
     public abstract boolean validarSolicitacao(Usuario usuario);
 
     @Override

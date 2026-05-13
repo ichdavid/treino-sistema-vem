@@ -2,7 +2,12 @@ package sistema;
 
 public class Instituicao {
     private String nomeI;
-    private  String tipoI;
+    private TipoI tipoInstituicao;
+
+    public Instituicao(String nomeI, TipoI tipoInstituicao) {
+        this.nomeI = nomeI;
+        this.tipoInstituicao = tipoInstituicao;
+    }
 
     public String getNomeI() {
         return nomeI;
@@ -12,11 +17,11 @@ public class Instituicao {
         this.nomeI = nomeI;
     }
 
-    public String getTipoI() {
-        return tipoI;
+    public TipoI getTipoInstituicao() {
+        return tipoInstituicao;
     }
 
-    public void setTipoI(String tipoI) {
-        this.tipoI = tipoI;
+    public void setTipoInstituicao(TipoI tipoInstituicao) {
+        this.tipoInstituicao = tipoInstituicao;
     }
 }

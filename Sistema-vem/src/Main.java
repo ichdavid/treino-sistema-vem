@@ -1,4 +1,5 @@
-import com.sun.security.jgss.GSSUtil;
+import sistema.Instituicao;
+import sistema.TipoI;
 import sistema.Usuario;
 
 import java.util.ArrayList;

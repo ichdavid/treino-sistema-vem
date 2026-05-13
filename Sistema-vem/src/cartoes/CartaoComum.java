@@ -25,4 +25,5 @@ public class CartaoComum extends Cartao{
     public void setSaldoComum(double saldoComum) {
         SaldoComum = saldoComum;
     }
+
 }
