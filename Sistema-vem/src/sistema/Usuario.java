@@ -15,9 +15,9 @@ public class Usuario {
     private Instituicao instituicao;
     private List<Cartao> listaCartoes;
 
-    public Usuario (String nomeUsuario, String cpf, int idade) {
-        this.nomeUsuario = nomeUsuario;
+    public Usuario (String cpf, String nomeUsuario, int idade) {
         this.cpf = cpf;
+        this.nomeUsuario = nomeUsuario;
         this.idade = idade;
         this.listaCartoes = new ArrayList<>();
 
