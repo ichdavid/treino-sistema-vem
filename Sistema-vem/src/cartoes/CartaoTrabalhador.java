@@ -5,8 +5,8 @@ import sistema.Usuario;
 public class CartaoTrabalhador extends Cartao{
     private double saldoTrabalhador;
 
-    public CartaoTrabalhador(String numeroCartao, String tipoCartao) {
-        super(numeroCartao, tipoCartao);
+    public CartaoTrabalhador(String numeroCartao, TipoCartao tipoC) {
+        super(numeroCartao, tipoC);
         saldoTrabalhador = 0.0;
     }
 

@@ -4,13 +4,11 @@ import sistema.Usuario;
 
 public abstract class Cartao {
     private String numeroCartao;
-    private String tipoCartao;
+    private TipoCartao tipoC;
 
-    public Cartao ( String numeroCartao, String tipoCartao){
+    public Cartao(String numeroCartao, TipoCartao tipoC) {
         this.numeroCartao = numeroCartao;
-        this.tipoCartao = tipoCartao;
-
-
+        this.tipoC = tipoC;
     }
 
     public String getNumeroCartao() {
@@ -21,12 +19,12 @@ public abstract class Cartao {
         this.numeroCartao = numeroCartao;
     }
 
-    public String getTipoCartao() {
-        return tipoCartao;
+    public TipoCartao getTipoC() {
+        return tipoC;
     }
 
-    public void setTipoCartao(String tipoCartao) {
-        this.tipoCartao = tipoCartao;
+    public void setTipoC(TipoCartao tipoC) {
+        this.tipoC = tipoC;
     }
 
     public abstract boolean validarSolicitacao(Usuario usuario);
@@ -35,7 +33,7 @@ public abstract class Cartao {
     public String toString() {
         return "Cartao{" +
                 "numeroCartao='" + numeroCartao + '\'' +
-                ", tipoCartao='" + tipoCartao + '\'' +
+                ", tipoC=" + tipoC +
                 '}';
     }
 }

@@ -5,9 +5,9 @@ import sistema.Usuario;
 public class CartaoEstudante extends Cartao{
     private double saldoEstudante;
 
-    public CartaoEstudante(String numeroCartao, String tipoCartao) {
-        super(numeroCartao, tipoCartao);
-        saldoEstudante = 0.0;
+    public CartaoEstudante(String numeroCartao, TipoCartao tipoC) {
+        super(numeroCartao, tipoC);
+        this.saldoEstudante = 0.0;
     }
 
     @Override

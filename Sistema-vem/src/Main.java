@@ -1,5 +1,4 @@
-import cartoes.Cartao;
-import cartoes.CartaoComum;
+import cartoes.*;
 import sistema.Empresa;
 import sistema.Instituicao;
 import sistema.TipoI;
@@ -18,6 +17,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         List<Usuario> listaUsuario = new ArrayList<>();
         List<Empresa> listaEmpresas = new ArrayList<>();
+        List<Instituicao> listaInsituicoes = new ArrayList<>();
 
         int opcao;
 
@@ -35,7 +35,11 @@ public class Main {
                 case 2:
                     cadastrarEmpresa(sc, listaEmpresas);
                     break;
+                case 3:
+                    cadastrarInstituicao(sc, listaInsituicoes);
+                    break;
                 case 4:
+                    solicitarCartao(sc, listaUsuario);
                     break;
                 case 5:
                     if(listaUsuario.isEmpty()){
@@ -76,7 +80,7 @@ public class Main {
         System.out.print("Digite uma opção (0-6): ");
     }
 
-    private static void imprimirMenuCatoes(){
+    private static void imprimirMenuCartoes(){
         System.out.println("============================");
         System.out.println("         Cartão VAI         ");
         System.out.println("============================");
@@ -152,52 +156,111 @@ public class Main {
 
 
 
-    private static void solicitarCartao(Scanner sc, List<Usuario> listaUsuarios){
+    private static void solicitarCartao(Scanner sc, List<Usuario> listaUsuarios) {
 
         int opcao;
 
-        do{
-            //Imprime o menu de cartões
-            imprimirMenuCatoes();
-            opcao = sc.nextInt();
-            sc.nextLine();
+        String cpfU = formatoCpf(sc);
+        int usuarioExiste = buscarUsuario(cpfU, listaUsuarios);
 
-            //EXECUÇÃO DA FUNÇÃO SELECIONADA PELO USUARIO
-            switch (opcao) {
-                case 1:
-                    String cpfU = formatoCpf(sc);
-                    int usuarioExiste = buscarUsuario(cpfU, listaUsuarios);
+        if (usuarioExiste == -1) {
+            System.out.println("\n❌ Usuario não cadastrado no sistema");
+            return;
+        } else {
+            Usuario u = listaUsuarios.get(usuarioExiste);
 
-                    Usuario u = listaUsuarios.get(usuarioExiste);
+            do {
+                //Imprime o menu de cartões
+                imprimirMenuCartoes();
+                opcao = sc.nextInt();
+                sc.nextLine();
 
-                    CartaoComum cartaoC = new CartaoComum("10.90.45645465-6", "VAI COMUM");
-                    Boolean verificarC = cartaoC.validarSolicitacao(u);
+                //EXECUÇÃO DA FUNÇÃO SELECIONADA PELO USUARIO
+                switch (opcao) {
+                    case 1:
+                        if(possuiCartao(u, TipoCartao.COMUM)){
+                            System.out.println("\n❌ Erro: Você já possui este tipo de cartão!");
+                        }else{
+                            CartaoComum cartaoC = new CartaoComum("10.90.45645465-6", TipoCartao.COMUM);
+                            Boolean verificarC = cartaoC.validarSolicitacao(u);
 
-                    if (verificarC) {
-                        u.getListaCartoes().add(cartaoC);
-                        System.out.println("\n✔ Cartão criado com sucesso!");
+                            if (verificarC) {
+                                u.getListaCartoes().add(cartaoC);
+                                System.out.println("\n✔ Cartão criado com sucesso!");
+                            } else {
+                                System.out.println("\n❌ Erro: Não é possivel solicitar este tipo de cartão!");
+                            }
+                        }
+                        break;
+                    case 2:
+                        if(possuiCartao(u, TipoCartao.ESTUDANTE)){
+                            System.out.println("\n❌ Erro: Você já possui este tipo de cartão!");
+                        }else{
+                            CartaoEstudante cartaoE = new CartaoEstudante("10.90.45645465-6", TipoCartao.ESTUDANTE);
+                            Boolean verificarE = cartaoE.validarSolicitacao(u);
 
-                    } else {
-                        System.out.println("\n❌ Erro: Não é possivel solicitar este tipo de cartão!");
-                    }
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 0:
-                    System.out.println("VOLTANDO...");
-                    break;
-                default:
-                    System.out.println("Opção Inválida. ");
+                            if (verificarE) {
+                                u.getListaCartoes().add(cartaoE);
+                                System.out.println("\n✔ Cartão criado com sucesso!");
+                            } else {
+                                System.out.println("\n❌ Erro: Não é possivel solicitar este tipo de cartão!");
+                            }
+                        }
+                        break;
+                    case 3:
+                        if(possuiCartao(u, TipoCartao.TRABALHADOR)){
+                            System.out.println("\n❌ Erro: Você já possui este tipo de cartão!");
+                        }else{
+                            CartaoTrabalhador cartaoT = new CartaoTrabalhador("10.90.45645465-6", TipoCartao.TRABALHADOR);
+                            Boolean verificarT = cartaoT.validarSolicitacao(u);
 
-            }
+                            if (verificarT) {
+                                u.getListaCartoes().add(cartaoT);
+                                System.out.println("\n✔ Cartão criado com sucesso!");
+                            } else {
+                                System.out.println("\n❌ Erro: Não é possivel solicitar este tipo de cartão!");
+                            }
+                        }
+                        break;
+                    case 4:
+                        if(possuiCartao(u, TipoCartao.INFANTIL)){
+                            System.out.println("\n❌ Erro: Você já possui este tipo de cartão!");
+                        }else{
+                            CartaoInfantil cartaoI = new CartaoInfantil("10.90.45645465-6", TipoCartao.INFANTIL);
+                            Boolean verificarI = cartaoI.validarSolicitacao(u);
 
-        }while(opcao!=0);
+                            if (verificarI) {
+                                u.getListaCartoes().add(cartaoI);
+                                System.out.println("\n✔ Cartão criado com sucesso!");
+                            } else {
+                                System.out.println("\n❌ Erro: Não é possivel solicitar este tipo de cartão!");
+                            }
+                        }
+                        break;
+                    case 5:
+                        if(possuiCartao(u, TipoCartao.IDOSO)){
+                            System.out.println("\n❌ Erro: Você já possui este tipo de cartão!");
+                        }else{
+                            CartaoIdoso cartaoIdoso = new CartaoIdoso("10.90.45645465-6", TipoCartao.IDOSO);
+                            Boolean verificarIdoso = cartaoIdoso.validarSolicitacao(u);;
+
+                            if (verificarIdoso) {
+                                u.getListaCartoes().add(cartaoIdoso);
+                                System.out.println("\n✔ Cartão criado com sucesso!");
+                            } else {
+                                System.out.println("\n❌ Erro: Não é possivel solicitar este tipo de cartão!");
+                            }
+                        }
+                        break;
+                    case 0:
+                        System.out.println("VOLTANDO...");
+                        break;
+                    default:
+                        System.out.println("Opção Inválida. ");
+                }
+
+            } while (opcao != 0);
+        }
 
     }
 
@@ -218,6 +281,9 @@ public class Main {
 
     }
 
+    private static String formatoCnpj(Scanner sc){}
+
+
     private static int buscarUsuario(String cpf, List<Usuario> listaUsuarios) {
         int i = 0;
         for (Usuario u : listaUsuarios) {
@@ -229,7 +295,18 @@ public class Main {
         return -1;
     }
 
+    private static boolean possuiCartao(Usuario usuario, TipoCartao tipoC){
+        for(Cartao c : usuario.getListaCartoes()){
+            if(c.getTipoC().equals(tipoC)){
+                return true;
+            }
+        }
+        return false;
+    }
 
+    private static int buscarEmpresa(List<Usuario> listaUsuarios){}
+
+    private static int buscarInstituicao(String nomeInstituicao, List<Usuario> listaUsuarios){}
 
 
 

@@ -3,8 +3,8 @@ package cartoes;
 import sistema.Usuario;
 
 public class CartaoInfantil extends Cartao{
-    public CartaoInfantil(String numeroCartao, String tipoCartao) {
-        super(numeroCartao, tipoCartao);
+    public CartaoInfantil(String numeroCartao, TipoCartao tipoC) {
+        super(numeroCartao, tipoC);
     }
 
     @Override
