@@ -149,8 +149,6 @@ public class Main {
 
     //METODO PARA FAZER O CADASTRO DA EMPRESA
     private static void cadastrarEmpresa(Scanner sc, List<Empresa> listEmpresa){
-        System.out.print("Nome da empresa: ");
-        String nomeEmp = sc.nextLine();
         System.out.print("CNPJ da empresa: ");
         String cnpj = sc.nextLine();
 
@@ -158,6 +156,9 @@ public class Main {
         if (EmpresaVerificada != -1) {
             System.out.print("Cnpj já cadastrado");
         }else {
+            System.out.print("Nome da empresa: ");
+            String nomeEmp = sc.nextLine();
+
             Empresa empresa = new Empresa(nomeEmp, cnpj);
             listEmpresa.add(empresa);
             System.out.println("Empresa cadastrada com sucesso!");
