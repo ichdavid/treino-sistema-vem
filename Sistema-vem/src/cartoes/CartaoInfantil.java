@@ -1,6 +1,6 @@
 package cartoes;
 
-import sistema.Usuario;
+import sistema.*;
 
 public class CartaoInfantil extends Cartao{
     public CartaoInfantil(String numeroCartao, TipoCartao tipoC) {

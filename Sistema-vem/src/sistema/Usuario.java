@@ -1,7 +1,6 @@
 package sistema;
 
-import cartoes.Cartao;
-import cartoes.CartaoComum;
+import cartoes.*;
 
 import java.util.ArrayList;
 import java.util.List;

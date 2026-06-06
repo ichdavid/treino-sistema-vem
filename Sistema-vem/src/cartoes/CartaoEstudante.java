@@ -1,6 +1,6 @@
 package cartoes;
 
-import sistema.Usuario;
+import sistema.*;
 
 public class CartaoEstudante extends Cartao{
     private double saldoEstudante;

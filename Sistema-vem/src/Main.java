@@ -1,7 +1,6 @@
 import cartoes.*;
 import sistema.Empresa;
 import sistema.Instituicao;
-import sistema.TipoI;
 import sistema.Usuario;
 
 import java.util.ArrayList;
@@ -196,9 +195,8 @@ public class Main {
                             System.out.println("\n❌ Erro: Você já possui este tipo de cartão!");
                         }else{
                             CartaoComum cartaoC = new CartaoComum("10.90.45645465-6", TipoCartao.COMUM);
-                            Boolean verificarC = cartaoC.validarSolicitacao(u);
 
-                            if (verificarC) {
+                            if (cartaoC.validarSolicitacao(u)) {
                                 u.getListaCartoes().add(cartaoC);
                                 System.out.println("\n✔ Cartão criado com sucesso!");
                             } else {
@@ -211,9 +209,8 @@ public class Main {
                             System.out.println("\n❌ Erro: Você já possui este tipo de cartão!");
                         }else{
                             CartaoEstudante cartaoE = new CartaoEstudante("10.90.45645465-6", TipoCartao.ESTUDANTE);
-                            Boolean verificarE = cartaoE.validarSolicitacao(u);
 
-                            if (verificarE) {
+                            if (cartaoE.validarSolicitacao(u)) {
                                 u.getListaCartoes().add(cartaoE);
                                 System.out.println("\n✔ Cartão criado com sucesso!");
                             } else {
@@ -226,9 +223,8 @@ public class Main {
                             System.out.println("\n❌ Erro: Você já possui este tipo de cartão!");
                         }else{
                             CartaoTrabalhador cartaoT = new CartaoTrabalhador("10.90.45645465-6", TipoCartao.TRABALHADOR);
-                            Boolean verificarT = cartaoT.validarSolicitacao(u);
 
-                            if (verificarT) {
+                            if (cartaoT.validarSolicitacao(u)) {
                                 u.getListaCartoes().add(cartaoT);
                                 System.out.println("\n✔ Cartão criado com sucesso!");
                             } else {
@@ -241,9 +237,8 @@ public class Main {
                             System.out.println("\n❌ Erro: Você já possui este tipo de cartão!");
                         }else{
                             CartaoInfantil cartaoI = new CartaoInfantil("10.90.45645465-6", TipoCartao.INFANTIL);
-                            Boolean verificarI = cartaoI.validarSolicitacao(u);
 
-                            if (verificarI) {
+                            if (cartaoI.validarSolicitacao(u)) {
                                 u.getListaCartoes().add(cartaoI);
                                 System.out.println("\n✔ Cartão criado com sucesso!");
                             } else {
@@ -256,9 +251,8 @@ public class Main {
                             System.out.println("\n❌ Erro: Você já possui este tipo de cartão!");
                         }else{
                             CartaoIdoso cartaoIdoso = new CartaoIdoso("10.90.45645465-6", TipoCartao.IDOSO);
-                            Boolean verificarIdoso = cartaoIdoso.validarSolicitacao(u);;
 
-                            if (verificarIdoso) {
+                            if (cartaoIdoso.validarSolicitacao(u)) {
                                 u.getListaCartoes().add(cartaoIdoso);
                                 System.out.println("\n✔ Cartão criado com sucesso!");
                             } else {
@@ -329,7 +323,7 @@ public class Main {
         return -1;
     }
 
-    private static int buscarInstituicao(String nomeInstituicao, List<Usuario> listaUsuarios){}
+    //private static int buscarInstituicao(String nomeInstituicao, List<Usuario> listaUsuarios){}
 
 
 

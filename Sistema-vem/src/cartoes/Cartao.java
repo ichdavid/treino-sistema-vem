@@ -1,6 +1,6 @@
 package cartoes;
 
-import sistema.Usuario;
+import sistema.*;
 
 public abstract class Cartao {
     private String numeroCartao;
