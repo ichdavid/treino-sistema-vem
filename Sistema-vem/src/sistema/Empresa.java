@@ -4,6 +4,12 @@ public class Empresa {
     private String nomeEmp;
     private String cnpj;
 
+    public Empresa(String nomeEmp, String cnpj) {
+        this.nomeEmp = nomeEmp;
+        this.cnpj = cnpj;
+
+    }
+
     public String getNomeEmp() {
         return nomeEmp;
     }

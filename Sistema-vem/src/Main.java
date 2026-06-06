@@ -149,7 +149,21 @@ public class Main {
     }
 
     //METODO PARA FAZER O CADASTRO DA EMPRESA
-    private static void cadastrarEmpresa(Scanner sc, List<Empresa> listEmpresa){}
+    private static void cadastrarEmpresa(Scanner sc, List<Empresa> listEmpresa){
+        System.out.print("Nome da empresa: ");
+        String nomeEmp = sc.nextLine();
+        System.out.print("CNPJ da empresa: ");
+        String cnpj = sc.nextLine();
+
+        int EmpresaVerificada = buscarEmpresa(listEmpresa, cnpj);
+        if (EmpresaVerificada != -1) {
+            System.out.print("Cnpj já cadastrado");
+        }else {
+            Empresa empresa = new Empresa(nomeEmp, cnpj);
+            listEmpresa.add(empresa);
+            System.out.println("Empresa cadastrada com sucesso!");
+        }
+    }
 
     //METODO PARA FAZER O CADASTRO DA INSTITUIÇÃO
     private static void cadastrarInstituicao(Scanner sc, List<Instituicao> listInstituicao){}
@@ -281,7 +295,7 @@ public class Main {
 
     }
 
-    private static String formatoCnpj(Scanner sc){}
+    //private static String formatoCnpj(Scanner sc){}
 
 
     private static int buscarUsuario(String cpf, List<Usuario> listaUsuarios) {
@@ -304,7 +318,16 @@ public class Main {
         return false;
     }
 
-    private static int buscarEmpresa(List<Usuario> listaUsuarios){}
+    private static int buscarEmpresa(List<Empresa> listaEmpresas, String cnpj){
+        int i = 0;
+        for (Empresa e : listaEmpresas) {
+            if (e.getCnpj().equalsIgnoreCase(cnpj)) {
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
 
     private static int buscarInstituicao(String nomeInstituicao, List<Usuario> listaUsuarios){}
 
